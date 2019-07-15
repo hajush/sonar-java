@@ -85,7 +85,7 @@ public class JavaTestSuite {
   @CheckForNull
   static Measure getMeasure(String componentKey, String metricKey) {
     WsMeasures.ComponentWsResponse response = TestUtils.newWsClient(ORCHESTRATOR).measures().component(new ComponentWsRequest()
-      .setComponentKey(componentKey)
+      .setComponent(componentKey)
       .setMetricKeys(singletonList(metricKey)));
     List<Measure> measures = response.getComponent().getMeasuresList();
     return measures.size() == 1 ? measures.get(0) : null;
@@ -94,7 +94,7 @@ public class JavaTestSuite {
   @CheckForNull
   static Map<String, Measure> getMeasures(String componentKey, String... metricKeys) {
     return TestUtils.newWsClient(ORCHESTRATOR).measures().component(new ComponentWsRequest()
-      .setComponentKey(componentKey)
+      .setComponent(componentKey)
       .setMetricKeys(asList(metricKeys)))
       .getComponent().getMeasuresList()
       .stream()

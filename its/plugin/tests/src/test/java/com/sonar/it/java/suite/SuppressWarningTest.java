@@ -68,7 +68,7 @@ public class SuppressWarningTest {
   @CheckForNull
   static WsMeasures.Measure getMeasure(String componentKey, String metricKey) {
     WsMeasures.ComponentWsResponse response = TestUtils.newWsClient(ORCHESTRATOR).measures().component(new ComponentWsRequest()
-      .setComponentKey(componentKey)
+      .setComponent(componentKey)
       .setMetricKeys(singletonList(metricKey)));
     List<WsMeasures.Measure> measures = response.getComponent().getMeasuresList();
     return measures.size() == 1 ? measures.get(0) : null;
